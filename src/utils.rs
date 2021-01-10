@@ -6,6 +6,18 @@ pub fn number_width(n: usize) -> usize {
     }
 }
 
+pub fn str_join(mut iter: impl Iterator<Item = String>, delim: &str) -> String {
+    let mut ans = String::new();
+    if let Some(s) = iter.next() {
+        ans.push_str(&s);
+    }
+    for s in iter {
+        ans.push_str(delim);
+        ans.push_str(&s)
+    }
+    ans
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
